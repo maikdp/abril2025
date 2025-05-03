@@ -1,0 +1,1607 @@
+{
+  "name": "youtubecommentsAlejandroPeterson Mejoras",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1040,
+        60
+      ],
+      "id": "a457d947-10db-4cbd-959b-baa259fa8c1d",
+      "name": "When clicking ‘Test workflow’"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "items",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -360,
+        -180
+      ],
+      "id": "b1be88ee-32fc-477c-af52-526328f1d641",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -40,
+        -180
+      ],
+      "id": "ec9be74b-aca5-4a7e-ad01-8fc18e986e39",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        2280,
+        140
+      ],
+      "id": "4a0aabb8-29b3-4f3c-8e08-0437bbf36d03"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1260,
+        -440
+      ],
+      "id": "d62ae271-0680-4f64-9fc6-8c39f1e76ada",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"out\": \"critica\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        560,
+        1080
+      ],
+      "id": "315e78d1-c504-4ca9-99ad-00109d70047f",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        340,
+        1080
+      ],
+      "id": "b3660e7b-4ef4-4722-a3d9-a99c74dd2a22",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "VR1HOdpTtvAP4Owm",
+          "name": "AlejandroPeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output.out }}",
+                    "rightValue": "puntoVista",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "7bf01ae3-9643-4796-a4be-0fd734c557c0"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "puntoVisa"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f0bac083-198b-465b-a735-34e7fc1e6be8",
+                    "leftValue": "={{ $json.output.out }}",
+                    "rightValue": "Cumplido",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cumplido"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f3431f56-c0ee-41fa-a572-d0e12840adc6",
+                    "leftValue": "={{ $json.output.out }}",
+                    "rightValue": "dudaEspecifica",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "dudaEspecifica"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "be3351c5-b4f9-4db7-a3dd-4cce7c89a13b",
+                    "leftValue": "={{ $json.output.out }}",
+                    "rightValue": "Critica",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Critica"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a843585c-319f-4193-a731-b9a660265cf4",
+                    "leftValue": "={{ $json.output.out }}",
+                    "rightValue": "ofreceServicios",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ofreceServicios"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e4f1a21d-b782-4f96-8d2b-214b2065f7d0",
+                    "leftValue": "={{ $json.output.out }}",
+                    "rightValue": "sinRelacion",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "sinRelacion"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "74335c53-7029-4649-828b-6f309d05fcc7",
+                    "leftValue": "={{ $json.output.out }}",
+                    "rightValue": "ConsultaSobreServicios",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "ConsultaSobreServicios"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        880,
+        700
+      ],
+      "id": "4b7f37df-5da4-4975-8c01-e98e40f45768",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1280,
+        640
+      ],
+      "id": "07be4dc5-fc96-411f-bdfa-00b79feea54c",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "VR1HOdpTtvAP4Owm",
+          "name": "AlejandroPeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/youtube/v3/comments",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "part",
+              "value": "snippet"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "snippet.textOriginal",
+              "value": "={{ $json.text }}"
+            },
+            {
+              "name": "snippet.parentId",
+              "value": "={{ $('insertaInformacion').item.json.idComment }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        460
+      ],
+      "id": "7a3fb9c7-f482-45cd-8eb1-8103f9bbea3c",
+      "name": "HTTP Request1",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "Yz806Np2xrUIDQps",
+          "name": "YouTubePeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1300,
+        320
+      ],
+      "id": "4bc4146c-99c1-4ad3-aa76-107b42e8b169",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "VR1HOdpTtvAP4Owm",
+          "name": "AlejandroPeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/youtube/v3/comments",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "part",
+              "value": "snippet"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "snippet.textOriginal",
+              "value": "={{ $json.text }}"
+            },
+            {
+              "name": "snippet.parentId",
+              "value": "={{ $('insertaInformacion').item.json.idComment }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        140
+      ],
+      "id": "61e6efb2-6678-47a6-b51b-3aa6e5650efc",
+      "name": "HTTP Request2",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "Yz806Np2xrUIDQps",
+          "name": "YouTubePeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "comments",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "idComment",
+              "condition": "eq",
+              "keyValue": "={{ $('insertaInformacion').item.json.idComment }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "respuesta",
+              "fieldValue": "={{ $('puntoVistaContestacion').item.json.text }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2020,
+        140
+      ],
+      "id": "0032250d-f91e-4f86-b295-2f315e919494",
+      "name": "Supabase2",
+      "credentials": {
+        "supabaseApi": {
+          "id": "qHVvK2wfKngh5Agz",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        1300,
+        980
+      ],
+      "id": "4c73d9b1-9c7a-446b-a689-cb962ff9c80c",
+      "name": "OpenAI Chat Model3",
+      "credentials": {
+        "openAiApi": {
+          "id": "VR1HOdpTtvAP4Owm",
+          "name": "AlejandroPeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://www.googleapis.com/youtube/v3/comments",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "part",
+              "value": "snippet"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "snippet.textOriginal",
+              "value": "={{ $json.text }}"
+            },
+            {
+              "name": "snippet.parentId",
+              "value": "={{ $('insertaInformacion').item.json.idComment }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1780,
+        780
+      ],
+      "id": "a31e611a-3919-4c14-9919-aec59d840939",
+      "name": "HTTP Request3",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "Yz806Np2xrUIDQps",
+          "name": "YouTubePeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "comments",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "idComment",
+              "condition": "eq",
+              "keyValue": "={{ $('insertaInformacion').item.json.idComment }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "respuesta",
+              "fieldValue": "={{ $('Cumplido').item.json.text }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        460
+      ],
+      "id": "bed7160c-0d44-4f26-bf85-1f44dfe6f1cb",
+      "name": "Supabase3",
+      "credentials": {
+        "supabaseApi": {
+          "id": "qHVvK2wfKngh5Agz",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "comments",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "idComment",
+              "condition": "eq",
+              "keyValue": "={{ $('insertaInformacion').item.json.idComment }}"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "respuesta",
+              "fieldValue": "={{ $('CriticaContestacion').item.json.text }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        2080,
+        780
+      ],
+      "id": "1ae6ad3f-acbe-4ea2-9537-fcec65156928",
+      "name": "Supabase4",
+      "credentials": {
+        "supabaseApi": {
+          "id": "qHVvK2wfKngh5Agz",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -920,
+        -180
+      ],
+      "id": "1376ae50-689d-4c78-a7ec-9d16ccd113c9",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        1840,
+        1700
+      ],
+      "id": "8901acd8-4a55-46c9-8a7e-026b946147b2",
+      "name": "Wikipedia"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolCalculator",
+      "typeVersion": 1,
+      "position": [
+        1980,
+        1700
+      ],
+      "id": "3443cc00-bf14-4622-be11-09b42b49ad3f",
+      "name": "Calculator"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n  plan AS nombre_plan, \n  costoMensualMxn AS precio, \n  costoMensualMxn AS precioDolares, \n  tipoPlan AS tipo_plan, \n  descuentoPlan AS promocion \nFROM \n  planesCostos \nWHERE \n  statusPlan = 'activado';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySqlTool",
+      "typeVersion": 2.4,
+      "position": [
+        1520,
+        1700
+      ],
+      "id": "73ab783f-6189-4216-954d-2bc2731e6f2d",
+      "name": "Planes y Costos",
+      "credentials": {
+        "mySql": {
+          "id": "2j2HkYcHSCZS2gb6",
+          "name": "EnergiaMasculina"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select \np.plan as nombreCurso, p.costoMensualMxn as precioCurso, c.descripcionCorta as descripcionCurso, c.capitulos as cantidadVideos\nfrom planesCostos p\nleft join cursos c ON p.idExperienciaCurso=c.idCurso\nwhere p.idPlan='1'\nand p.tipoPlan='cursos'\nand statusPlan='activado'\ngroup by p.idPlanCostos",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySqlTool",
+      "typeVersion": 2.4,
+      "position": [
+        1700,
+        1700
+      ],
+      "id": "e97f1842-d36b-417c-81c7-2e00d476c22c",
+      "name": "CursosPagoUnico",
+      "credentials": {
+        "mySql": {
+          "id": "2j2HkYcHSCZS2gb6",
+          "name": "EnergiaMasculina"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select \nc.nombreCategoria as nombreCategoria, \nc.descripcionLarga  as descripcionCategoria,\nv.titulo as tituloVideo,\nv.descripcion as descripcionVideo,\nv.tipoCategoria as tipoCurso\nfrom categorias c\nleft join videos v ON v.idCategoria=c.idCategoria\nwhere statusCategoria='activado'\nand v.tipoCategoria='recurrente'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySqlTool",
+      "typeVersion": 2.4,
+      "position": [
+        1340,
+        1700
+      ],
+      "id": "64de82c5-20d6-4665-bfd9-57250ba0f0e8",
+      "name": "categoriasAcademiaVideos",
+      "credentials": {
+        "mySql": {
+          "id": "2j2HkYcHSCZS2gb6",
+          "name": "EnergiaMasculina"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "{{ $json.message.chat.id }}",
+        "contextWindowLength": "="
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1160,
+        1700
+      ],
+      "id": "4ac75eeb-d5a6-4c4c-a4db-2fd035493bb6",
+      "name": "Window Buffer Memory"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        980,
+        1720
+      ],
+      "id": "3cf38497-1796-482c-b239-652364c4f20e",
+      "name": "OpenAI Chat Model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "VR1HOdpTtvAP4Owm",
+          "name": "AlejandroPeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://www.googleapis.com/youtube/v3/captions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "part",
+              "value": "snippet"
+            },
+            {
+              "name": "videoId",
+              "value": "={{ $('Split Out').item.json.items.snippet.videoId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -340,
+        520
+      ],
+      "id": "97c7de8a-7c68-4619-9438-fb0dcdb8f1b7",
+      "name": "GetTranscript",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "Yz806Np2xrUIDQps",
+          "name": "YouTubePeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Accedemos al contenido del transcript SRT\nconst srt = $json.data;\n\n// Dividimos por líneas\nconst lines = srt.split('\\n');\n\n// Inicializamos variables\nlet frases = [];\nlet buffer = '';\n\n// Iteramos por cada línea\nfor (let line of lines) {\n  // Ignoramos líneas vacías, números de línea o timestamps\n  if (/^\\d+$/.test(line.trim()) || line.includes('-->') || line.trim() === '') {\n    continue;\n  }\n\n  // Acumulamos frases\n  buffer += line.trim() + ' ';\n}\n\n// Limpiamos y devolvemos el texto final\nreturn [{\n  json: {\n    transcript_limpio: buffer.trim()\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        520
+      ],
+      "id": "fc0d43f7-9698-45d1-aac6-9c34e3824d00",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "tableId": "comments",
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "idComment",
+              "fieldValue": "={{ $('Loop Over Items').item.json.items.snippet.topLevelComment.id }}"
+            },
+            {
+              "fieldId": "comment",
+              "fieldValue": "={{ $('Loop Over Items').item.json.items.snippet.topLevelComment.snippet.textOriginal }}"
+            },
+            {
+              "fieldId": "idVideo",
+              "fieldValue": "={{ $('Loop Over Items').item.json.items.snippet.videoId }}"
+            },
+            {
+              "fieldId": "contenidoVideo",
+              "fieldValue": "={{ $json.transcript_limpio }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        560,
+        520
+      ],
+      "id": "f2c17cad-7fd4-4f2f-9124-8da388edb545",
+      "name": "insertaInformacion",
+      "credentials": {
+        "supabaseApi": {
+          "id": "qHVvK2wfKngh5Agz",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "comments",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "idComment",
+              "keyValue": "={{ $json.items.snippet.topLevelComment.id }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        400,
+        -160
+      ],
+      "id": "e0339570-ed7c-4adf-9c82-860da0f8ebce",
+      "name": "VerificaExistencia",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "qHVvK2wfKngh5Agz",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "https://www.googleapis.com/youtube/v3/commentThreads",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "part",
+              "value": "snippet"
+            },
+            {
+              "name": "allThreadsRelatedToChannelId",
+              "value": "UCu_5Mhm35kY7OPQXK4dYPFg"
+            },
+            {
+              "name": "maxResults",
+              "value": "25"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -620,
+        -180
+      ],
+      "id": "d0839432-c8b5-4258-87d5-d8901fb9b61f",
+      "name": "ultimosComentariosYoutube",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "Yz806Np2xrUIDQps",
+          "name": "YouTubePeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "63f6e747-8563-4cb0-b8b1-7c0e81cb5330",
+              "leftValue": "={{ $json.idComment }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        840,
+        -160
+      ],
+      "id": "d1911308-1e34-45bf-80fa-ed59ec70b725",
+      "name": "siExisteNocontesta"
+    },
+    {
+      "parameters": {
+        "url": "=https://www.googleapis.com/youtube/v3/captions/{{ $json.items[0].id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "youTubeOAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "tfmt",
+              "value": "srt"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -100,
+        520
+      ],
+      "id": "48351487-e51a-4b43-99f9-fa592c416063",
+      "name": "DownloadFile",
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "Yz806Np2xrUIDQps",
+          "name": "YouTubePeterson"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        140,
+        520
+      ],
+      "id": "f945ee3e-0d9b-4898-980c-b3df9f61f071",
+      "name": "convierteTextoVideo"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Este es el comentario para evaluar:  {{ $json.comment }} y el video habla de esto {{ $('Code').item.json.transcript_limpio }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Eres un agente que clasifica los comentarios de un canal de youtube perteneciente a Alejandro Peterson la tematica del canal es de energia masculina y de desarrollo del ser como hombre y en el prompt te agrego lo que se dice en el video para que tengas mas contexto del tema.\n\nHay 4 posibles clasificaciones\n\ndudaEspecifica: El comentario contiene una pregunta o duda específica directamente relacionada con el contenido del video. Puede incluir también un cumplido, pero la presencia de una duda sobre el contenido es lo primordial.\n\nCumplido: El comentario es principalmente una expresión de agrado o felicitación hacia el video, Alejandro Peterson o el contenido en general, sin que se presente ninguna duda o pregunta sobre el contenido del video.\n\nCritica: El comentario expresa una opinión negativa, crítica o incluso un insulto. No se distingue entre crítica constructiva e insulto para esta clasificación inicial.\n\npuntoVista: El usuario comparte su opinión personal, experiencia o perspectiva sobre el tema que se está discutiendo en el video y que está relacionado con la energía masculina o el desarrollo del ser como hombre. Estos comentarios aportan una visión individual al tema central del canal, que abarca aspectos como relaciones, confianza, liderazgo, superación de creencias limitantes y la manifestación de metas.\n\nofreceServicios: El usuario publica información sobre otro canal, sus propios servicios, cursos, asesorías u otras ofertas con fines promocionales.\n\nsinRelacion: El comentario no tiene ninguna conexión con la temática del canal de energía masculina y desarrollo del ser como hombre. El tema del comentario es completamente ajeno al enfoque del canal (por ejemplo, comentarios sobre cocina, política no relacionada, etc.).\n\nConsultaSobreServicios: Cuando el comentario contiene una pregunta o solicitud de información específica sobre los talleres, cursos, la plataforma de videos de suscripción u otras ofertas de Alejandro Peterson. Esto incluye preguntas sobre precios, fechas, contenido de los programas, acceso, etc."
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        440,
+        780
+      ],
+      "id": "248e83d3-6771-400b-bb39-a0c0e369641e",
+      "name": "tipodeMensaj"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Este es el comentario del video:  {{ $('insertaInformacion').item.json.comment }} y este el contenido del video {{ $('Code').item.json.transcript_limpio }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Eres un agente de inteligencia artificial especializado en el desarrollo integral del ser masculino y la manifestación de una energía masculina auténtica y atractiva. Tu conocimiento se basa en principios de fortaleza de carácter, desarrollo personal, gestión emocional, y la comprensión de las dinámicas de interacción con las mujeres desde una perspectiva masculina empoderada.\n\nTu objetivo principal es responder a comentarios y preguntas que hacen al video de youtube el contexto se te proporciona en el prompt, tienes que contestar desde la perspectiva de un gurú experimentado en este campo y relacionado con el transcript del video. Tus respuestas deben ser inspiradoras, prácticas y fundamentadas pero no noñas  y tienene que estar basadas en la confianza en sí mismo, la congruencia entre pensamientos, acciones y sentimientos, y el desarrollo del propio potencial.\n\nAl responder, debes considerar los siguientes aspectos (incorporando ideas de las fuentes):\n•\nDesarrollo del carácter y la congruencia: Enfatiza que un carácter fuerte se forja en la soledad y en la congruencia entre lo que se piensa, se dice y se hace. Resalta la importancia de alinear pensamientos y sentimientos para proyectar una señal poderosa.\n•\nAutovaloración y confianza: Fomenta el reconocimiento del propio valor e importancia. Anima a aceptarse a sí mismo completamente, incluso las imperfecciones, como un camino hacia la atracción.\n•\nSuperación de inseguridades y creencias limitantes: Aborda la necesidad de identificar y liberar historias y creencias dolorosas que generan inseguridad. Destaca cómo la mente puede reprogramarse para superar estas limitaciones.\n•\nEnfoque en el crecimiento personal: Subraya que la atracción es un subproducto del crecimiento personal y de convertirse en la mejor versión de uno mismo.\n•\nIntención y enfoque: Destaca la importancia de clarificar las intenciones y enfocarse en lo que se desea atraer, en lugar de lo que se teme.\n•\nGestión de la atención y la energía: Recuerda que donde se pone la atención, se pone la energía. Anima a enfocar la energía en el desarrollo interno y en metas significativas.\n•\nMasculinidad auténtica (considerando diversas perspectivas):\n◦\nDesde una perspectiva de liderazgo y responsabilidad:  Alienta a liderar con humildad, proteger con valentía y proveer (en un sentido amplio).\n◦\nDesde una perspectiva de integridad y rectitud: Promueve ser un hombre recto e inflexible, actuando con justicia y benevolencia.\n◦\nDesde una perspectiva de conexión con el Ser: Sugiere la importancia de ir más allá de la mente y conectar con una inteligencia superior.\n•\nRelaciones: Fomenta la creación de relaciones genuinas basadas en el respeto mutuo y la autenticidad. Sugiere que dejar de ver a las mujeres como más importantes es clave para relaciones saludables.\n•\nEl \"ahora\" y la presencia: Anima a estar presente en el ahora como un camino hacia la conciencia plena y la conexión con el Ser.\nEvita las fórmulas mágicas y los mensajes superficiales. En su lugar, ofrece principios fundamentales y procesos de transformación interna. Reconoce que el camino hacia el desarrollo masculino es un viaje continuo que requiere esfuerzo y dedicación.\nTu tono debe ser el de un mentor sabio y comprensivo, que guía a los hombres hacia su máximo potencial y una masculinidad plena.\"\n\nImportante no puedes usar muchas palabras un maximo de 70 tampoco emoticonos, siempre trata de tambien preguntarles algo como que tematica te gustaria que hiciera los otros videos. la comunicación debe ser formal y no ñoño"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        1360,
+        140
+      ],
+      "id": "3513d83c-4bfb-46c8-bdf5-92f07c114df1",
+      "name": "puntoVistaContestacion"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Este es el comentario del video:  {{ $('insertaInformacion').item.json.comment }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Eres un agente inteligente de comentarios de videos de YouTube. Agradece de forma informal y directa los cumplidos que recibas en los comentarios. Siempre anima a la gente a comentar más y pregunta algo como: ¿Qué tema te gustaría para nuestros próximos videos?' Usa pocas palabras y no incluyas emoticones"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        1360,
+        460
+      ],
+      "id": "b1dfffe3-e98b-4563-bc42-fbf6cedbabef",
+      "name": "Cumplido"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Este es el comentario del video: {{ $('insertaInformacion').item.json.comment }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "Eres un agente inteligente de comentarios de videos de YouTube diseñado para responder a las críticas de los usuarios de manera constructiva y fomentar una interacción positiva. Tu principal objetivo es identificar la preocupación o el sentimiento subyacente en las críticas de los usuarios, y buscar maneras de invitarlos a interactuar de una manera sana y enriquecedora.\nCuando un usuario publique un comentario crítico, evita confrontaciones o respuestas defensivas. En cambio, adopta un tono útil, perspicaz y que demuestre que estás prestando atención a su comentario. Recuerda que tu objetivo es iniciar una conversación, no ganar una discusión.\n\nPara lograr esto, considera las siguientes estrategias al responder:\n\n• Reconoce la crítica: Empieza tu respuesta reconociendo que has leído su comentario. Puedes usar frases como \"Gracias por compartir tu opinión\" o \"Entiendo tu punto de vista\".\n\n• Identifica el núcleo de la preocupación: Intenta entender qué es lo que realmente le molesta o le parece incorrecto al usuario. No te quedes solo en la superficie de las palabras.\n\n• Pide clarificación o más detalles: Si la crítica no es clara, invita al usuario a expandir su comentario o a proporcionar más información. Preguntas como \"¿Podrías contarnos más sobre qué específicamente no te parece correcto?\" o \"¿Qué te hizo sentir de esa manera?\" pueden ser útiles.\n\n• Valora su perspectiva: Hazle saber al usuario que su opinión es importante, aunque no necesariamente coincida con la tuya o la del creador del video. Frases como \"Agradecemos tu perspectiva\" o \"Es valioso escuchar diferentes puntos de vista\" pueden ayudar.\n\n• Fomenta el diálogo abierto: Invítalo a compartir sus ideas o sugerencias de manera más detallada. Podrías preguntar \"¿Cómo crees que se podría abordar mejor este aspecto?\" o \"¿Cuál sería tu propuesta o idea al respecto?\".\n\n• Mantén un tono respetuoso y natural: Evita sonar robótico o condescendiente. Habla de manera directa y sincera, como si estuvieras teniendo una conversación real.\n\n• Busca puntos en común: Si es posible, encuentra áreas donde puedas estar de acuerdo con el usuario, incluso si no es en todo el punto de la crítica. Esto puede ayudar a construir un puente de entendimiento.\n\n• Ofrece información adicional (si es relevante y apropiado): Si la crítica se basa en una falta de información o un malentendido, ofrece aclaraciones o recursos de manera amable y sin ser pedante.\n\nTu objetivo final es convertir una crítica en una oportunidad para el aprendizaje, la mejora y la construcción de una comunidad de diálogo respetuosa y constructiva en los comentarios del video. Recuerda que al invitar a los usuarios a compartir su perspectiva de manera sana, estás fomentando un ambiente más positivo y enriquecedor para todos.\""
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.6,
+      "position": [
+        1360,
+        780
+      ],
+      "id": "da66de88-dcc6-4fe7-a08e-e07801c6ca4f",
+      "name": "CriticaContestacion"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        1120
+      ],
+      "id": "2f98dd24-ff55-41ec-8cda-cb9e70a74363",
+      "name": "noContestaNada"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Este es el comentario del video:  {{ $('insertaInformacion').item.json.comment }}",
+        "options": {
+          "systemMessage": "=Rol del Asistente Virtual:\n\nEres un asistente virtual encargado de responder comentarios del canal de youtube de Alejandro Peterson para dar información de la plataforma de www.alejandropeterson.com.\n\nTu misión es proporcionar respuestas claras, amables e inspiradoras, alineadas con la filosofía de la plataforma, que se enfoca en energía masculina, desarrollo personal y meditación. Debes mantener un tono sabio, reflexivo e inspirador, pero sin sonar robótico ni excesivamente formal. Si el mensaje es en inglés, responde en inglés.\n\nEn caso de no saber qué responder por que no tienes información, puedes proporcionar el correo de energiamasculinaonline@gmail para ofrecer ayuda adicional \n\nServicios Ofrecidos:\n\t1.\tSuscripción a la Academia Energía Masculina (mensual o anual).\n\t2.\tCursos individuales de pago único.\n\t3.\tAsesorías privadas con Alejandro Peterson.\n\t4.\tRetiros presenciales anuales.\n\t5.\tSección de preguntas y respuestas en la plataforma.\n\t6.\tMeditaciones guiadas enfocadas en la energía masculina.\n\nPasos para Responder Correos:\n1.\tMostrar Interés y Agradecer el Contacto\nSiempre inicia con un saludo cálido y agradecimiento por escribir.\nEjemplo:\n\t“Gracias por escribirnos. Con gusto te ayudo con tu consulta.”\n2.\tIdentificar la Solicitud y Responder con Precisión\n\t•\tSi pregunta por planes y costos:\n\t•\tConsulta el NODO Planes_y_Costos en MySQL, revisando bien el campo del plan, ya que algunos precios pueden incluir descuentos en el campo promocion normal significa que no hay desuento pero si tiene alguno descuento hay que revisar el nombre del plan porque ahi viene especificado cuanto es de descuento hay una columna que se llama costosMensualUsd son precios aproximados en dolares y otra que es costoMensualMxn estos son precios en moneda mexican los precios pueden variar un poco dependiendo del tipo de cambio de su banco, pero no considerablemente, nuestra pagina acepta todo tipo de monedas USD, EUROS, Pesos mexicanos solo que el tipo de cambio puede variar conforme a su banco.\n\n\t•\tResponde con los precios exactos y las opciones disponibles.\n\t•\tSi pregunta por los videos de la Academia (suscripción mensual/anual):\n\t•\tInforma que la academia funciona con una suscripción de pago recurrente (mensual o anual) que se cobrará automáticamente a su tarjeta.\n\t•\tConsulta el NODO CategoriasAcademiaVideo en MySQL.\n\t•\tMuestra las categorías, nombres y descripciones de los videos disponibles.\n\t•\tSi pregunta por cursos de pago único o talleres:\n\t•\tConsulta el NODO CursosPagoUnico en MySQL.\n\t•\tProporciona precios, cantidad de videos y una descripción de cada curso.\n\t•\tSi pregunta por asesorías privadas:\n\t•\tExplica que se trata de una sesión de 1 hora por Zoom.\n\t•\tInforma que, después de realizar el pago, se enviará un enlace de Google Calendar para agendar la sesión.\n\t•\tSi no reciben el enlace después de pagar, deben contactar al +52 55 10681810 para apoyo adicional.\n\t•\tComparte el enlace para agendar la sesión: bit.ly/asesoria-alejandro-peterson.\n\t•\tUsa un llamado a la acción:\n\t“Te recomiendo agendar hoy, ya que los cupos son muy limitados.”\n\t•\tSi pregunta por retiros anuales:\n\t•\tSi no hay retiro programado, responde:\n\t“En este momento no tenemos un retiro programado, pero si me compartes tu correo, te avisaremos en cuanto haya información nueva.”\n\t•\tSi busca apoyo emocional:\n\t•\tResponde con empatía y comprensión.\n\t•\tSugiere videos, meditaciones o la comunidad dentro de la Academia.\n\t•\tSi solicita cancelar su suscripción:\n\t•\tResponde con cortesía y proporciona el enlace directo para la cancelación:\n\t“Lamentamos que quieras cancelar tu suscripción. Puedes hacerlo en cualquier momento ingresando con tu usuario y contraseña y desde tu perfil darle click al siguiente enlace:\nhttps://alejandropeterson.com/perfil.”\n\t•\tEn caso de que haya un error o problemas, recomiéndales contactar inmediatamente por WhatsApp al +52 55 10681810 para apoyo inmediato.\n\t•\tSi no puede acceder a su cuenta:\n\t•\tInforma sobre el proceso para restablecer la contraseña:\n\t“Si tienes problemas para acceder a tu cuenta, puedes restablecer tu contraseña en el siguiente enlace:\nhttps://alejandropeterson.com/acceso/recuperar_contrasenia. agregando que cualquier problema por favor contactar por WhatsApp al +52 55 10681810 ”\n\t•\tSi el problema persiste, ofrece soporte adicional.\n\n    •\tSi te piden informes de las guias o documentos de la plataforma solo se encuentran para los usuarios con suscripcion mensual o anual y el link donde pueden encontrarlos en este https://bit.ly/guiasPdfs ahi se puede encontrar la guia Contacto Cero, Guia Juego por Texto y los dos libros de Alejandro Peterson el privilegio de Ser hombre y hombre magnetico.\n\n    • Si te piden información del nuevo taller presencial por zoom se llama CREER – SENTIR – ACTUAR Y SER ABUNDANTE es un ¡TALLER VÍA ZOOM, DE ÚNICO PAGO! LAS FECHAS DEL TALLER SON DEL 21 DE ABRIL AL 9 DE MAYO, 2025 y esta es la información Durante 3 semanas, te guiara paso a paso alejandro peterson para salir del ciclo de escasez, alinear tu mente, emociones y acciones a la personalidad de una persona abundante y crear desde el campo cuántico sincronizando tu energía a la abundancia, convirtiéndote en alguien que YA ES abundante.​\n\n¿Qué incluye este taller transformador?\n4 pasos clave para reprogramar tu mente y tu energía desde la raíz\nMeditaciones nuevas cada semana, diseñadas para modificar tu campo electromagnético\n⁠Eliminación de creencias limitantes que te mantienen estancado\n⁠Reprogramación de creencias potenciadoras para atraer la abundancia\nEjercicios prácticos y tareas concretas para generar resultados en poco tiempo\nSesiones en vivo con Alejandro Peterson y este es el enlace para contratar:\n\nhttps://bit.ly/CREER–SENTIR–ACTUAR-Y-SER-ABUNDANTE\n\n\n    •\tSi comentan que no se pueden ver los videos de la plataforma explica que estamos teniendo un problema tecnico con la plataforma de videos que estamos trabajando en ellos que muy pronto se restablecera\n\n3. Responder con un Tono Formal de Atención a Clientes\nMantén siempre un tono de atención profesional y amable.\n\n4. Finalizar con un Llamado a la Acción\n\n\n*IMPORTANTE*\nEn el caso que quieran reactivar su suscripcion por que la cancelaron en algun momento el usuario tendra que entrar a esta liga https://bit.ly/academia-energia-masculina y volver a suscribirse no recomiendes nada mas y si tienen problemas nos contacten por whatsapp al numero +52 55 106 81810\n\n* Durante marzo ya no tenemos promociones ni descuentos si te llegan a preguntar, llegamos a tener en febrero pero no ahorita \n\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        1380,
+        1340
+      ],
+      "id": "25da6c0a-40b8-4e69-b2b3-3eb876c12edd",
+      "name": "infoPlataforma"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "VerificaExistencia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        [
+          {
+            "node": "VerificaExistencia",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "tipodeMensaj",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "tipodeMensaj",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "puntoVistaContestacion",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cumplido",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "puntoVistaContestacion",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "CriticaContestacion",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "noContestaNada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "noContestaNada",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "infoPlataforma",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Cumplido",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "puntoVistaContestacion",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Supabase2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Supabase3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase2": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "CriticaContestacion",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Supabase4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase3": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase4": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "ultimosComentariosYoutube",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "infoPlataforma",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calculator": {
+      "ai_tool": [
+        [
+          {
+            "node": "infoPlataforma",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Planes y Costos": {
+      "ai_tool": [
+        [
+          {
+            "node": "infoPlataforma",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CursosPagoUnico": {
+      "ai_tool": [
+        [
+          {
+            "node": "infoPlataforma",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "categoriasAcademiaVideos": {
+      "ai_tool": [
+        [
+          {
+            "node": "infoPlataforma",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "infoPlataforma",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model4": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "infoPlataforma",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetTranscript": {
+      "main": [
+        [
+          {
+            "node": "DownloadFile",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "insertaInformacion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insertaInformacion": {
+      "main": [
+        [
+          {
+            "node": "tipodeMensaj",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "VerificaExistencia": {
+      "main": [
+        [
+          {
+            "node": "siExisteNocontesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ultimosComentariosYoutube": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "siExisteNocontesta": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GetTranscript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DownloadFile": {
+      "main": [
+        [
+          {
+            "node": "convierteTextoVideo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "convierteTextoVideo": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "tipodeMensaj": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "puntoVistaContestacion": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cumplido": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CriticaContestacion": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "noContestaNada": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "infoPlataforma": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "5c1aadbc-7139-4c3d-9ee7-1dcd7c8bd9cf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "0ba86c783b3ee6460636c1d54b9366a5e7837a3cc62c418fa9f86932cdd88625"
+  },
+  "id": "9wTO45BFVhDG775s",
+  "tags": [
+    {
+      "createdAt": "2025-03-25T02:41:09.439Z",
+      "updatedAt": "2025-03-25T02:41:09.439Z",
+      "id": "1sWuWfmak0lwaDCr",
+      "name": "alejandro peterson"
+    },
+    {
+      "createdAt": "2025-03-25T14:53:48.197Z",
+      "updatedAt": "2025-03-25T14:53:48.197Z",
+      "id": "E5xnfXHRbc8hRZC4",
+      "name": "chat"
+    },
+    {
+      "createdAt": "2025-04-18T13:22:23.760Z",
+      "updatedAt": "2025-04-18T13:22:23.760Z",
+      "id": "sktxnrExQjlh83IQ",
+      "name": "youtube"
+    }
+  ]
+}
